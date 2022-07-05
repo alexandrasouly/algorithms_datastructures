@@ -6,7 +6,7 @@ from typing import Optional
 class Node:
 
     def __init__(self, data, prev=None, next=None):
-        self.next : Optional[Node]= next
+        self.next: Optional[Node] = next
         self.prev: Optional[Node] = prev
         self.data = data
 
@@ -77,7 +77,7 @@ class LinkedList:
         if self.tail:
             self.tail.next = None
 
-    def delete_node(self, node: Node):
+    def delete_node_doubly(self, node: Node):
         if node.next:
             node.next.prev = node.prev
         if node.prev:
