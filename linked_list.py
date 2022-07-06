@@ -35,6 +35,14 @@ class LinkedList:
         values = [str(x) for x in self]
         return ' -> '.join(values)
 
+    def __len__(self):
+        count = 0
+        current = self.head
+        while current:
+            count +=1
+            current = current.next
+        return count
+
     def __iter__(self) -> None:
         current = self.head
         while current:

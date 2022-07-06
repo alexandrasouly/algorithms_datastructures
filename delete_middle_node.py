@@ -9,8 +9,8 @@ def delete_node_singly(node: Node):
     node.next = node.next.next
 
 # WHY Does this not work?
-# def delete_node_singly(node: Node):
-#     node = node.next
+def delete_node_singly(node: Node):
+    node = node.next
 
 
 if __name__ == "__main__":

@@ -6,23 +6,25 @@ from linked_list import LinkedList, Node
 
 
 def partition(linked_list: LinkedList, x: int):
-    first_half = None
-    second_half = None
 
-    node: Node
+    smaller_tail = None
+    bigger_tail = None
     for node in linked_list:
         if node.data < x:
-            if first_half:
-                first_half.next = node
+            if not smaller_tail:
+                smaller_tail = node
             else:
-                first_half = node
+                smaller_tail.next = node
+                smaller_tail = node
         elif node.data >= x:
-            if second_half:
-                second_half.next = node
+            if not bigger_tail:
+                bigger_tail = bigger_head = node
             else:
-                second_half = node
-
-    print(linked_list)
+                bigger_tail.next = node
+                bigger_tail = node
+         
+    add_partition_after_node(smaller_tail)
+    smaller_tail.next.next = bigger_head
 
 
 def add_partition_after_node(node: Node):
@@ -33,7 +35,7 @@ def add_partition_after_node(node: Node):
 
 if __name__ == "__main__":
     linked_list = LinkedList([1, 5, 1, 3, 4, 11, 8, 3, 4, 2, 3, 5, 1, 10])
-    x = 5
+    x = 4
     print(f"we will be partitioning around {x}")
 
     partition(linked_list, x)
